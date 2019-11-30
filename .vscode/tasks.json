@@ -1,0 +1,43 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558 
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "windows": {
+        "options": {
+            "shell": {
+                "executable": "cmd.exe",
+                "args": [
+                    "/d", "/c"
+                ]
+            }
+        }
+    },
+    "tasks": [
+        {
+            "type": "npm",
+            "script": "test",
+            "group": "test",
+            "problemMatcher": []
+        },
+        {
+            "label": "generate openhabConfig Doc html",
+            "type": "shell",
+            "command": "DEBUG='*' node ohConfigDocGen.cli.js X:\\ Y:\\scripts\\test",
+            "windows": {
+                "command": "set DEBUG=* & node ohConfigDocGen.cli.js X:\\ Y:\\scripts\\test"
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$eslint-stylish"
+            ]
+        },
+        {
+            "type": "npm",
+            "script": "install",
+            "problemMatcher": []
+        }
+    ]
+}
