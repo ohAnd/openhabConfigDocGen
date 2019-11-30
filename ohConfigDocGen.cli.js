@@ -5,6 +5,8 @@ var myArgs = process.argv.slice(2);
 
 var debug = require('debug')('debug')
 
+var version = '1.0.0';
+
 const srcOHfolder = myArgs[0];
 const targetOutfolder = myArgs[1];
 
@@ -50,7 +52,7 @@ function buildHtml(req) {
     var title = 'openhab Config Docu';
     var header = '';
     var body = 'Noch ein test';
-    var footer = '<p class="w3-small">build on '+new Date()+'</p>';
+    var footer = '<div><p>'+title+' - version: '+version+'</p><p class="w3-small">build on '+new Date()+'</p></div>';
 
     var template = getTemplate();
     template = template.replace('$$TITLE$$', title);
@@ -58,8 +60,9 @@ function buildHtml(req) {
     template = template.replace('$$LOGO$$', title);
     template = template.replace('$$FOOTER$$', footer);
 
-    template = template.replace('$%NUM_FOLDERS%$', numFolders);
-    template = template.replace('$%NUM_FILES%$', numFiles);
+    template = template.replace(/\$%NUM_FOLDERS%\$/g, numFolders);
+    template = template.replace(/\$%NUM_FILES%\$/g, numFiles);
+    template = template.replace(/\$%VERSION%\$/g, version);
 
     template = addMenuStructure(template);
 
@@ -137,7 +140,7 @@ function addFiles(templateString) {
             for(var nameSub in menuContent[name]) {
                 debug("read file: "+menuContent[name][nameSub]);
                 var filecontent = readOHfile(menuContent[name][nameSub]);
-                newFileContent += '<div class="w3-panel w3-card w3-light-grey w3-hide" id="'+nameSub+'">'
+                newFileContent += '<div class="w3-panel w3-card w3-light-grey w3-hide closeable" id="'+nameSub+'">'
                 +'<h3>'+nameSub+'</h3>'
                 +'<div class="w3-code notranslate">'+enocdeForHtml(filecontent)+'</div></div>';
             }
