@@ -6,8 +6,13 @@
   - [ToDo's](#todos)
   - [Usage](#usage)
   - [Installation](#installation)
+    - [Prerequisites](#prerequisites)
+    - [Download & Install](#download--install)
   - [Debugging](#debugging)
     - [execute with debugging on](#execute-with-debugging-on)
+      - [Linux - OSX](#linux---osx)
+      - [Windows CMD](#windows-cmd)
+      - [Windows PowerShell](#windows-powershell)
   - [Testing](#testing)
 
 ## Description
@@ -27,7 +32,6 @@ In the first step only for the data in config files. Planned for future, to get 
 - cluster the hierarchy of rules, groups, items
 - ...
 
-
 ## Usage
 
 to execute the generator start with the following command:
@@ -36,10 +40,17 @@ to execute the generator start with the following command:
 
 ## Installation
 
-1. fetch the master branch
+### Prerequisites
+
+This tool require node.js. To use it, install [NPM JS](https://www.npmjs.com/get-npm "get npm from www.npmjs.com")
+
+### Download & Install
+
+1. clone/ fetch the [master branch](https://github.com/ohAnd/openhabConfigDocGen.git)
 2. navigate to downloded folder
 3. in commandline
-   1.     npm install openhab_config_doc_gen
+        
+        npm install openhab_config_doc_gen
 
 ---
 
@@ -47,9 +58,17 @@ to execute the generator start with the following command:
 
 ### execute with debugging on
 
-to execute with debugging on:
+
+#### Linux - OSX
 
     DEBUG=* node ohConfigDocGen.cli.js <srcfolder_of_openhab_config> <targetfolder_for_output>
+
+#### Windows CMD
+
+    set DEBUG=* & node ohConfigDocGen.cli.js <srcfolder_of_openhab_config> <targetfolder_for_output>
+#### Windows PowerShell
+    
+    $env:DEBUG='*';node ohConfigDocGen.cli.js <srcfolder_of_openhab_config> <targetfolder_for_output>
 
 ## Testing
  t.b.d.
