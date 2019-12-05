@@ -5,6 +5,8 @@
   - [Actual features](#actual-features)
   - [ToDo's](#todos)
   - [Screenshots](#screenshots)
+    - [home screen](#home-screen)
+    - [example for items](#example-for-items)
   - [Usage](#usage)
   - [Installation](#installation)
     - [Prerequisites](#prerequisites)
@@ -35,8 +37,13 @@ In the first step only for the data in config files. Planned for future, to get 
 
 ## Screenshots
 
-![alt text](./docu/home.gif "home screen")
-![alt text](./docu/items.gif "example for an item file")
+### home screen
+
+![home screen](./docu/home.gif "home screen")
+
+### example for items
+
+![example for items ](./docu/items.gif "example for an item file")
 
 ## Usage
 
@@ -55,6 +62,9 @@ This tool require node.js. To use it, install [NPM JS](https://www.npmjs.com/get
 1. clone/ fetch the [master branch](https://github.com/ohAnd/openhabConfigDocGen.git)
 2. navigate to downloded folder
 3. in commandline
+        
+        npm install ..\<yourdownloadfolder>\
+    or
         
         npm install openhab_config_doc_gen
 
