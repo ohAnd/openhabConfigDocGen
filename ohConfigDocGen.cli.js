@@ -4,42 +4,35 @@ const [,,  ...args] = process.argv
 var myArgs = process.argv.slice(2);
 
 var debug = require('debug')('debug')
+const Prism = require('prismjs');
+var fs = require('fs');
 
-var version = '1.0.0';
+//workaround to use an own language description for highligthing
+var langOpenhab = require('./prism-openhab.js');
+let openhab = langOpenhab.openhabLang();
+
+var version = '1.0.1';
 
 const srcOHfolder = myArgs[0];
 const targetOutfolder = myArgs[1];
 
-//readOHfile(myArgs[0]);
 
-var fs = require('fs');
 
 var menuContent = {};
 var numFolders = 0;
 var numFiles = 0;
 
-//     "items":null,
-//     "rules":{
-//         "rule1":null,
-//         "rule2":null,
-//         "rule3":null,
-//     },
-//     "scripts":{
-//         "script1":null,
-//         "script2":null,
-//         "script3":null,
-//     },
-// };
+
+//##############################################################
+
 
 // get folder structure
 readSrcFolder(srcOHfolder);
 
-
-
-//##############################################################
-
 var fileName = targetOutfolder+'/test.html';
+
 var html = buildHtml();
+
 fs.writeFile(fileName, html, function(err) {
     if(err) {
         return console.log(err);
@@ -48,10 +41,10 @@ fs.writeFile(fileName, html, function(err) {
     debug("The file was saved!");
 }); 
 
+
 function buildHtml(req) {
     var title = 'openhab Config Docu';
     var header = '';
-    var body = 'Noch ein test';
     var footer = '<div><p>'+title+' - version: '+version+'</p><p class="w3-small">build on '+new Date()+'</p></div>';
 
     var template = getTemplate();
@@ -135,28 +128,50 @@ function addFiles(templateString) {
     
     //iterate FileList
     for(var name in menuContent) {
+        
         //substructure
         if(menuContent[name] instanceof Object) {
             for(var nameSub in menuContent[name]) {
+                //if(menuContent[name][nameSub] != "X:\\rules\\Strom.rules") continue;
                 debug("read file: "+menuContent[name][nameSub]);
                 var filecontent = readOHfile(menuContent[name][nameSub]);
-                newFileContent += '<div class="w3-panel w3-card w3-light-grey w3-hide closeable" id="'+nameSub+'">'
-                +'<h3>'+nameSub+'</h3>'
-                +'<div class="w3-code notranslate">'+enocdeForHtml(filecontent)+'</div></div>';
+                newFileContent += 
+                '<div class="w3-panel w3-card w3-light-grey w3-hide closeable" id="'+nameSub+'">' +
+                    '<h3>'+nameSub+'</h3>'+
+                    '<div class="w3-code w3-small notranslate"><pre><code>'+enocdeForHtml(filecontent)+'</code></pre></div>'+
+                '</div>';
             }
         }
     }
 
-    templateString = templateString.replace("$%CONTENT_FILE%$",newFileContent);
+    templateString = templateString.replace('$%CONTENT_FILE%$',newFileContent);
     
     return templateString;
 }
 
 function enocdeForHtml( str ) {
-    //return (str + '').replace(/[\\"']/g, '\\$&').replace(/\u0000/g, '\\0').replace(/\</g, '\<');
-    var escape = require('escape-html');
-    var html = escape(str);
-    return html;
+
+    var Normalizer = require('prismjs/plugins/normalize-whitespace/prism-normalize-whitespace');
+    // Create a new Normalizer object
+    var nw = new Normalizer({
+        'remove-trailing': true,
+        'remove-indent': true,
+        'left-trim': true,
+        'right-trim': true,
+        'break-lines': 100,
+        // 'indent': 2,
+        // 'remove-initial-line-feed': false,
+        // 'tabs-to-spaces': 4,
+        // 'spaces-to-tabs': 4
+    });
+
+    // Removes leading and trailing whitespace
+    // and then indents by 1 tab
+    str = nw.normalize(str, { });
+
+    str = Prism.highlight(str, Prism.languages.openhab, 'openhab');
+
+    return str;
 }
 
 function readSrcFolder(srcFolder) {
