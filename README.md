@@ -4,6 +4,7 @@
   - [Description](#description)
   - [Actual features](#actual-features)
   - [ToDo's](#todos)
+  - [Screenshots](#screenshots)
   - [Usage](#usage)
   - [Installation](#installation)
     - [Prerequisites](#prerequisites)
@@ -22,15 +23,20 @@ In the first step only for the data in config files. Planned for future, to get 
 
 ## Actual features
 - basic html/ css/ js - template integrated for customization
-- grab the give folder recursivly for known openhab config file formats
+- grab the given folder recursivly for known openhab config file formats
 - show the folder/ file structure in the navigation tree with expand/ collpase
-- show the content of each file on site
+- show the content of each file on site with code highlighting
 
 ## ToDo's
-- highlighting for ESH Code
+- ~~highlighting for ESH Code~~
 - searching the files for keywords
 - cluster the hierarchy of rules, groups, items
 - ...
+
+## Screenshots
+
+![alt text](./docu/home.gif "home screen")
+![alt text](./docu/items.gif "example for an item file")
 
 ## Usage
 

@@ -1,6 +1,6 @@
 {
   "name": "openhab_config_doc_gen",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "generate a documentation in html for your openhab config files",
   "main": "ohConfigDocGen.cli.js",
   "scripts": {
@@ -14,9 +14,11 @@
   "author": "ohAnd",
   "license": "GPL-3.0",
   "dependencies": {
-    "debug": "4.1.1",
+    "debug": "^4.1.1",
     "directory-tree": "2.2.4",
-    "escape-html": "1.0.3"
+    "escape-html": "1.0.3",
+    "node-fetch": "^2.6.0",
+    "prismjs": "^1.17.1"
   },
   "devDependencies": {},
   "repository": {
