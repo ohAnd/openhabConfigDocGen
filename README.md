@@ -1,5 +1,7 @@
 # openhabConfigDocGen
 
+![](https://github.com/ohAnd/openhabConfigDocGen/workflows/Node%20CI/badge.svg)
+
 - [openhabConfigDocGen](#openhabconfigdocgen)
   - [Description](#description)
   - [Actual features](#actual-features)

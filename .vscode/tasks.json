@@ -17,7 +17,7 @@
             "type": "npm",
             "script": "test",
             "group": "test",
-            "problemMatcher": []
+            "problemMatcher":"$eslint-compact"
         },
         {
             "label": "generate openhabConfig Doc html",
@@ -29,10 +29,7 @@
             "group": {
                 "kind": "build",
                 "isDefault": true
-            },
-            "problemMatcher": [
-                "$eslint-stylish"
-            ]
+            }
         },
         {
             "type": "npm",
