@@ -32,6 +32,16 @@
             }
         },
         {
+            "label": "build ohConfig Doc Gen",
+            "type": "shell",
+            "command": "nearleyc language\\src\\items.nearley -o language\\items.js",
+            "windows": {
+                "command": "nearleyc language\\src\\items.nearley -o language\\items.js"
+            },
+            "group": "build"
+            
+        },
+        {
             "type": "npm",
             "script": "install",
             "problemMatcher": []

@@ -283,7 +283,7 @@ function exportItems(templateString) {
         '<span style="position:absolute;left:100px;bottom:28px" class="w3-text w3-tag w3-animate-opacity">' +
         '<div class="w3-container">' +
           '<div class="w3-left-align">category: ' + globalItemsRegistry[key].category + '</div>' +
-          '<div class="w3-left-align">tags: ' + globalItemsRegistry[key].category + '</div>' +
+          '<div class="w3-left-align">tags: ' + globalItemsRegistry[key].tags + '</div>' +
           '<div class="w3-left-align">groups: ' + globalItemsRegistry[key].groupNames + '</div>' +
         '</div></span>' +
       '</td>' +

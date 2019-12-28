@@ -8,11 +8,12 @@
   - [ToDo's](#todos)
   - [Screenshots](#screenshots)
     - [home screen](#home-screen)
-    - [example for items](#example-for-items)
+    - [example for items in registry](#example-for-items-in-registry)
+    - [example for items as file view](#example-for-items-as-file-view)
   - [Usage](#usage)
   - [Installation](#installation)
     - [Prerequisites](#prerequisites)
-    - [Download & Install](#download--install)
+    - [Download &amp; Install](#download-amp-install)
   - [Debugging](#debugging)
     - [execute with debugging on](#execute-with-debugging-on)
       - [Linux - OSX](#linux---osx)
@@ -40,10 +41,18 @@ In the first step only for the data in config files. Planned for future, to get 
 ## Screenshots
 
 ### home screen
+base screen after generating the documentation
 
 ![home screen](./docu/home.gif "home screen")
 
-### example for items
+### example for items in registry
+the registry shows all groups and items as single objects, tooltip for further attributes
+
+![example for items ](./docu/item_reg.png "example for an item file")
+
+### example for items as file view
+
+in the browser section the file contents can be reviewed
 
 ![example for items ](./docu/items.gif "example for an item file")
 
